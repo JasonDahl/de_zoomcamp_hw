@@ -10,7 +10,9 @@ WORKDIR /app
 
 # Copy the required files
 COPY ingest_data.py .
-COPY ny_taxi_postgresql_data ny_taxi_postgresql_data
+
+# Clean up APT cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set the entry point
 ENTRYPOINT ["python", "ingest_data.py"]
