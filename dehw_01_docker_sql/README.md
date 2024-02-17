@@ -1,6 +1,6 @@
 # Module 1: Docker, SQL, and Terraform
 
-This project demonstrates hands-on experience with Docker, SQL, and Terraform, emphasizing practical skills in data handling, exploration, and infrastructure setup. It combines both local and cloud-based technologies
+This project demonstrates hands-on experience with Docker, SQL, and Terraform, emphasizing practical skills in data handling, exploration, and infrastructure setup. It combines both local and cloud-based technologies.
 
 Requirements:
 - Docker
@@ -55,7 +55,7 @@ python ingest_data.py \
   --url=${URL}
 ```
 
-This script can be loaded into a Docker container using the included Dockerfile with the command
+This script can be loaded into a Docker container using the included [Dockerfile](https://github.com/JasonDahl/de_zoomcamp_hw/blob/main/dehw_01_docker_sql/Dockerfile, "View Dockerfile") with the command
 ```bash
 docker build -t taxi_ingest:v001 .
 ```
@@ -89,7 +89,7 @@ docker run -it \
 
 #### Querying the database
 
-We can query the database using PGAdmin, rinning on localhost:8080
+We can query the database using PGAdmin, running on localhost:8080
 To run Postgres and pgAdmin together, create a network:
 ```bash
 docker network create pg-network
@@ -120,7 +120,7 @@ docker run -it \
 We can also query the database using SQLAlchemy.  See several examples in the [Notebook](https://github.com/JasonDahl/de_zoomcamp_hw/blob/main/dehw_01_docker_sql/DE_HW1_Docker_SQL_Terraform.ipynb, "View notebook") .
 
 #### Docker-Compose
-We can use Docker-Compose to orchestrate the conatiners rather than starting the containers manually.  View the configuration in [docker-compose.yaml](https://github.com/JasonDahl/de_zoomcamp_hw/blob/main/dehw_01_docker_sql/docker-compose.yaml).
+We can use Docker-Compose to orchestrate the containers rather than starting the containers manually.  View the configuration in [docker-compose.yaml](https://github.com/JasonDahl/de_zoomcamp_hw/blob/main/dehw_01_docker_sql/docker-compose.yaml).
 
 Run it with:
 ```bash
@@ -139,7 +139,7 @@ docker-compose down
 
 Terraform allows us to create and destroy GCP resources as part of our workflow, allowing us to access Infrastructure as Code. Terraform requires a valid service account and credentials.  
 
-Configuration is in [main.tf](https://github.com/JasonDahl/de_zoomcamp_hw/blob/main/dehw_01_docker_sql/main.tf) and environment variavles are defined in [variables.tf](https://github.com/JasonDahl/de_zoomcamp_hw/blob/main/dehw_01_docker_sql/variables.tf)
+Configuration is in [main.tf](https://github.com/JasonDahl/de_zoomcamp_hw/blob/main/dehw_01_docker_sql/main.tf) and environment variables are defined in [variables.tf](https://github.com/JasonDahl/de_zoomcamp_hw/blob/main/dehw_01_docker_sql/variables.tf)
 
 Initialize terraform in a local folder with ```terraform init```.
 
