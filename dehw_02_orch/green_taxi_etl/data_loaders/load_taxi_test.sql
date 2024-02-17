@@ -1,2 +1,4 @@
 -- Docs: https://docs.mage.ai/guides/sql-blocks
-SELECT 1;
+SELECT * 
+FROM mage.green_taxi
+LIMIT 10;
