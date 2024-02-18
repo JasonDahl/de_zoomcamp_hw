@@ -1,0 +1,95 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - transform_gtaxi_colnames
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_taxi_api_pq
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_taxi_api_pq
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - record_load_date
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: transform_gtaxi_colnames
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - load_taxi_api_pq
+  uuid: transform_gtaxi_colnames
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: transformers/record_load_date.py
+  downstream_blocks:
+  - taxi_to_gcs_partitioned_parquet
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: record_load_date
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - transform_gtaxi_colnames
+  uuid: record_load_date
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: data_exporters/taxi_to_gcs_partitioned_parquet.py
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: taxi_to_gcs_partitioned_parquet
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - record_load_date
+  uuid: taxi_to_gcs_partitioned_parquet
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-02-18 14:54:04.192894+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: green_taxi_parquet_to_gcs
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: green_taxi_parquet_to_gcs
+variables_dir: /home/src/mage_data/magic-zoomcamp
+widgets: []
